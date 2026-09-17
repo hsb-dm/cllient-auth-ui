@@ -17,7 +17,15 @@
   padding-top: 88px;
   padding-bottom: 92px;
 }
-.banner { display: block; width: calc(100% + 12px); max-width: none; height: auto; margin: -6px -6px 0; }
+.bannerWrap { position: relative; width: calc(100% + 12px); margin: -6px -6px 0; }
+.banner { display: block; width: 100%; height: auto; }
+.bannerTranslation { position: absolute; inset: 0; font-family: var(--font-heading); }
+.bannerMainCopy { position: absolute; top: 14%; left: 8%; display: flex; width: 44%; height: 35%; flex-direction: column; justify-content: center; background: #080a08; color: #fff; font-size: clamp(16px, 2vw, 30px); font-weight: 800; line-height: .98; }
+.bannerMainCopy strong { color: #d9ff00; }
+.bannerCardCopy { position: absolute; top: 56%; display: flex; height: 13%; align-items: center; background: #080a08; color: #d9ff00; font-size: clamp(6px, .68vw, 10px); line-height: 1.05; }
+.bannerCardOne { left: 9%; width: 12%; }
+.bannerCardTwo { left: 24%; width: 13%; }
+.bannerCardThree { left: 39%; width: 13%; }
 .headline {
   margin: 20px 0 12px;
   font-family: var(--font-heading);

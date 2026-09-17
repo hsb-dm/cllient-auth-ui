@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef } from "react";
-import { TextInput, type TextInputProps } from "./text-input";
+import { TextInput, type TextInputProps } from "../text-input";
 
 export type EmailInputProps = Omit<TextInputProps, "label" | "type"> & {
   label?: string;

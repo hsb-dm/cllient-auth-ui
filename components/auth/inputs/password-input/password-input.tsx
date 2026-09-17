@@ -6,14 +6,15 @@ import {
   useState,
   type InputHTMLAttributes,
 } from "react";
-import { Button } from "../button";
-import glass from "../glass-field.module.css";
-import styles from "./auth-input.module.css";
+import { Button } from "../../button";
+import glass from "../../styles/glass-field.module.css";
+import { authDictionaries } from "../../i18n";
+import styles from "../shared/auth-input.module.css";
 import {
   getDescribedBy,
   InputErrorMessage,
   type InputErrorStateProps,
-} from "./input-error";
+} from "../shared/input-error";
 
 export type PasswordInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -30,12 +31,12 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   function PasswordInput(
     {
       id,
-      label = "Kata Sandi",
+      label = authDictionaries.id.login.passwordLabel,
       name = "password",
-      placeholder = "Kata Sandi",
+      placeholder = authDictionaries.id.login.passwordLabel,
       autoComplete = "current-password",
-      showPasswordLabel = "Tampilkan kata sandi",
-      hidePasswordLabel = "Sembunyikan kata sandi",
+      showPasswordLabel = authDictionaries.id.common.showPassword,
+      hidePasswordLabel = authDictionaries.id.common.hidePassword,
       containerClassName,
       isError = false,
       errorMessage,

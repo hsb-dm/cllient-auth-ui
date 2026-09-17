@@ -1,13 +1,16 @@
 import Image from "next/image";
-import { Container } from "../layout/container";
+import { Container } from "../../layout/container";
+import { authDictionaries } from "../i18n";
 import styles from "./auth-footer.module.css";
 
 export type AuthFooterProps = {
   copyrightText?: string;
+  regulatorAlt?: string;
 };
 
 export function AuthFooter({
-  copyrightText = "Copyright ©2026 HSB dilindungi undang-undang.",
+  copyrightText = authDictionaries.id.common.copyright,
+  regulatorAlt = authDictionaries.id.common.regulatorAlt,
 }: AuthFooterProps) {
   return (
     <footer className={styles.footer}>
@@ -17,7 +20,7 @@ export function AuthFooter({
           <Image
             className={styles.badges}
             src="/hsb/regulator-badges.webp"
-            alt="BAPPEBTI, OJK, Bank Indonesia, ICDX, Indonesia Clearing House, dan ASPEBTINDO"
+            alt={regulatorAlt}
             width={1962}
             height={381}
           />

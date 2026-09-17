@@ -1,0 +1,94 @@
+{
+  "common": {
+    "homeLabel": "HSB, halaman utama",
+    "awardsLabel": "Penghargaan HSB",
+    "regulatorAlt": "BAPPEBTI, OJK, Bank Indonesia, ICDX, Indonesia Clearing House, dan ASPEBTINDO",
+    "copyright": "Copyright ©2026 HSB dilindungi undang-undang.",
+    "showPassword": "Tampilkan kata sandi",
+    "hidePassword": "Sembunyikan kata sandi"
+  },
+  "login": {
+    "title": "LOGIN",
+    "methodLabel": "Metode login",
+    "phoneTab": "Nomor telepon",
+    "emailTab": "Email",
+    "phoneLabel": "Nomor telepon",
+    "phonePlaceholder": "Nomor Telepon",
+    "passwordLabel": "Kata Sandi",
+    "forgotPassword": "Lupa Password",
+    "submit": "Login",
+    "noAccount": "Belum punya akun?",
+    "register": "Daftar disini"
+  },
+  "forgetPassword": {
+    "title": "ATUR ULANG KATA SANDI",
+    "methodLabel": "Metode atur ulang kata sandi",
+    "phoneTab": "Nomor telepon",
+    "emailTab": "Email",
+    "phoneLabel": "Nomor telepon",
+    "phonePlaceholder": "Nomor Telepon",
+    "newPassword": "Kata Sandi Baru",
+    "confirmPassword": "Konfirmasi kata Sandi Baru",
+    "verificationCode": "Kode Verifikasi",
+    "sendOtp": "Kirim OTP",
+    "submit": "Reset Password",
+    "backToLogin": "Kembali ke halaman",
+    "login": "Login",
+    "requirementsLabel": "Persyaratan kata sandi",
+    "passwordRules": [
+      "8-12 Karakter",
+      "Memiliki minimal 1 angka",
+      "Memiliki minimal 1 huruf besar",
+      "Memiliki minimal 1 huruf kecil",
+      "Memiliki minimal 1 spesial karakter"
+    ]
+  },
+  "register": {
+    "title": "DAFTAR AKUN DEMO",
+    "phoneLabel": "Nomor telepon",
+    "phonePlaceholder": "Nomor Telepon",
+    "verificationCode": "Kode Verifikasi",
+    "sendOtp": "Kirim OTP",
+    "passwordLabel": "Kata Sandi",
+    "referralCode": "Kode referral (opsional)",
+    "submit": "Daftar",
+    "hasAccount": "Sudah punya akun?",
+    "login": "Login disini",
+    "bannerAlt": "Trading tanpa risiko dengan akun demo HSB: aman dan legal, gratis dana virtual, tanpa syarat deposit",
+    "bannerTitleLineOne": "TRADING TANPA",
+    "bannerTitleLineTwo": "RISIKO DENGAN",
+    "bannerTitleLineThree": "AKUN DEMO HSB",
+    "bannerCardOne": "AMAN & LEGAL",
+    "bannerCardTwo": "GRATIS DANA VIRTUAL",
+    "bannerCardThree": "TANPA SYARAT DEPOSIT",
+    "headline": "BUKA AKUN DEMO HSB, TRADING AMAN DALAM HITUNGAN MENIT",
+    "descriptionLineOne": "Mulai berlatih trading dengan akun demo gratis.",
+    "descriptionLineTwo": "Asah keahlian trading dan dapatkan",
+    "bonus": "Welcome Bonus hingga $350.",
+    "virtualFunds": "Gratis dana virtual",
+    "marketSimulation": "Simulasi market real-time",
+    "analysisPractice": "Bebas uji analisis",
+    "requirementsLabel": "Persyaratan kata sandi",
+    "passwordRules": [
+      "8-12 Karakter",
+      "Memiliki minimal 1 angka",
+      "Memiliki minimal 1 huruf besar",
+      "Memiliki minimal 1 huruf kecil",
+      "Memiliki minimal 1 spesial karakter"
+    ]
+  },
+  "metadata": {
+    "login": {
+      "title": "Login | HSB",
+      "description": "Masuk ke akun HSB Anda."
+    },
+    "forgetPassword": {
+      "title": "Atur Ulang Kata Sandi | HSB",
+      "description": "Atur ulang kata sandi akun HSB Anda."
+    },
+    "register": {
+      "title": "Daftar Akun Demo | HSB",
+      "description": "Buat akun demo HSB gratis Anda."
+    }
+  }
+}

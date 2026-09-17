@@ -1,4 +1,5 @@
 import styles from "./password-requirements.module.css";
+import { authDictionaries } from "../i18n";
 
 export type PasswordRequirement = {
   label: string;
@@ -8,24 +9,21 @@ export type PasswordRequirement = {
 export type PasswordRequirementsProps = {
   requirements?: readonly PasswordRequirement[];
   className?: string;
+  ariaLabel?: string;
 };
 
-export const defaultPasswordRequirements: readonly PasswordRequirement[] = [
-  { label: "8-12 Karakter" },
-  { label: "Memiliki minimal 1 angka" },
-  { label: "Memiliki minimal 1 huruf besar" },
-  { label: "Memiliki minimal 1 huruf kecil" },
-  { label: "Memiliki minimal 1 spesial karakter" },
-];
+export const defaultPasswordRequirements: readonly PasswordRequirement[] =
+  authDictionaries.id.forgetPassword.passwordRules.map((label) => ({ label }));
 
 export function PasswordRequirements({
   requirements = defaultPasswordRequirements,
   className,
+  ariaLabel = authDictionaries.id.forgetPassword.requirementsLabel,
 }: PasswordRequirementsProps) {
   return (
     <ul
       className={[styles.list, className].filter(Boolean).join(" ")}
-      aria-label="Persyaratan kata sandi"
+      aria-label={ariaLabel}
     >
       {requirements.map(({ label, isMet = false }) => (
         <li className={styles.item} data-met={isMet} key={label}>

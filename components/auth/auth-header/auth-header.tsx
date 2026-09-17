@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Container } from "../layout/container";
+import { Container } from "../../layout/container";
+import { authDictionaries } from "../i18n";
 import styles from "./auth-header.module.css";
 
 const awards = [
@@ -13,13 +14,19 @@ const awards = [
 
 export type AuthHeaderProps = {
   homeHref?: string;
+  homeLabel?: string;
+  awardsLabel?: string;
 };
 
-export function AuthHeader({ homeHref = "/" }: AuthHeaderProps) {
+export function AuthHeader({
+  homeHref = "/",
+  homeLabel = authDictionaries.id.common.homeLabel,
+  awardsLabel = authDictionaries.id.common.awardsLabel,
+}: AuthHeaderProps) {
   return (
     <header className={styles.header}>
       <Container className={styles.content}>
-        <Link className={styles.logoLink} href={homeHref} aria-label="HSB, halaman utama">
+        <Link className={styles.logoLink} href={homeHref} aria-label={homeLabel}>
           <Image
             className={styles.logo}
             src="/hsb/hsb-logo-v2.webp"
@@ -31,7 +38,7 @@ export function AuthHeader({ homeHref = "/" }: AuthHeaderProps) {
           />
         </Link>
 
-        <div className={styles.awards} role="group" aria-label="Penghargaan HSB">
+        <div className={styles.awards} role="group" aria-label={awardsLabel}>
           {awards.map(({ year, name, width }) => (
             <Image
               key={year}

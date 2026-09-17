@@ -6,13 +6,14 @@ import {
   useId,
   type InputHTMLAttributes,
 } from "react";
-import glass from "../glass-field.module.css";
-import styles from "./auth-input.module.css";
+import glass from "../../styles/glass-field.module.css";
+import { authDictionaries } from "../../i18n";
+import styles from "../shared/auth-input.module.css";
 import {
   getDescribedBy,
   InputErrorMessage,
   type InputErrorStateProps,
-} from "./input-error";
+} from "../shared/input-error";
 
 export type PhoneNumberInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -32,9 +33,9 @@ export const PhoneNumberInput = forwardRef<
 >(function PhoneNumberInput(
   {
     id,
-    label = "Nomor telepon",
+    label = authDictionaries.id.login.phoneLabel,
     name = "phone",
-    placeholder = "Nomor Telepon",
+    placeholder = authDictionaries.id.login.phonePlaceholder,
     autoComplete = "tel-national",
     countryCode = "+62",
     countryName = "Indonesia",

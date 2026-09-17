@@ -17,8 +17,38 @@ public/hsb/
 ```
 
 The only runtime dependencies are `next`, `react`, and `react-dom`. The Juturu
-and Stolzl fonts are loaded by `auth-page-layout.module.css` from
+and Stolzl fonts are loaded by `auth-page-layout/auth-page-layout.module.css` from
 `public/hsb/fonts`.
+
+## Component structure
+
+Each shared component owns a folder containing its implementation, styles, and
+barrel export. Page-specific files are grouped by feature:
+
+```text
+components/auth/
+├── auth-header/
+├── auth-footer/
+├── auth-form-frame/
+├── auth-page-layout/
+├── button/
+├── inputs/
+│   ├── email-input/
+│   ├── password-input/
+│   ├── phone-number-input/
+│   ├── text-input/
+│   └── shared/
+├── password-requirements/
+├── login/
+├── forget-password/
+├── register/
+├── styles/
+├── i18n.ts
+└── index.ts
+```
+
+Consumers should continue importing from `@/components/auth`. The internal
+folders can be copied together without exposing their relative paths.
 
 ## Basic usage
 
@@ -31,6 +61,24 @@ export default function LoginPage() {
   return <LoginPageView />;
 }
 ```
+
+## Localized routes
+
+The included App Router pages support Indonesian and English with one shared
+component implementation. All localized wording lives in `messages/id.json`
+and `messages/en.json`; `components/auth/i18n.ts` only provides types and the
+dictionary lookup:
+
+```text
+/id/login                 /en/login
+/id/forget-password       /en/forget-password
+/id/register              /en/register
+```
+
+The legacy `/login`, `/forget-password`, and `/register` routes redirect to the
+Indonesian versions. Internal authentication links preserve the active locale.
+Use `authDictionaries`, or pass an individual `copy` object to a form, when the
+consuming application needs to adjust wording without changing the components.
 
 If the target repository does not use the `@/` alias, replace the route import
 with a relative path. Imports inside the module already use relative paths.

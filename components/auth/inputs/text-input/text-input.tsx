@@ -5,13 +5,13 @@ import {
   useId,
   type InputHTMLAttributes,
 } from "react";
-import glass from "../glass-field.module.css";
-import styles from "./auth-input.module.css";
+import glass from "../../styles/glass-field.module.css";
+import styles from "../shared/auth-input.module.css";
 import {
   getDescribedBy,
   InputErrorMessage,
   type InputErrorStateProps,
-} from "./input-error";
+} from "../shared/input-error";
 
 export type TextInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,

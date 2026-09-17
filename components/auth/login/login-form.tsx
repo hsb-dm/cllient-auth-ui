@@ -2,17 +2,21 @@
 
 import Link from "next/link";
 import { useState, type FormEventHandler } from "react";
-import { Button } from "./button";
+import { Button } from "../button";
+import { authDictionaries, type LoginCopy } from "../i18n";
 import {
   EmailInput,
   PasswordInput,
   PhoneNumberInput,
-} from "./inputs";
+} from "../inputs";
 import styles from "./login-form.module.css";
 
 export type LoginMethod = "phone" | "email";
 
 export type LoginFormProps = {
+  copy?: LoginCopy;
+  showPasswordLabel?: string;
+  hidePasswordLabel?: string;
   defaultMethod?: LoginMethod;
   forgotPasswordHref?: string;
   registerHref?: string;
@@ -20,9 +24,12 @@ export type LoginFormProps = {
 };
 
 export function LoginForm({
+  copy = authDictionaries.id.login,
+  showPasswordLabel = authDictionaries.id.common.showPassword,
+  hidePasswordLabel = authDictionaries.id.common.hidePassword,
   defaultMethod = "phone",
-  forgotPasswordHref = "/forget-password",
-  registerHref = "/register",
+  forgotPasswordHref = "/id/forget-password",
+  registerHref = "/id/register",
   onSubmit,
 }: LoginFormProps) {
   const [method, setMethod] = useState<LoginMethod>(defaultMethod);
@@ -38,16 +45,16 @@ export function LoginForm({
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h1 className={styles.title}>LOGIN</h1>
+      <h1 className={styles.title}>{copy.title}</h1>
 
-      <div className={styles.tabs} aria-label="Metode login">
+      <div className={styles.tabs} aria-label={copy.methodLabel}>
         <Button
           className={styles.tab}
           variant="plain"
           aria-pressed={method === "phone"}
           onClick={() => setMethod("phone")}
         >
-          Nomor telepon
+          {copy.phoneTab}
         </Button>
         <Button
           className={styles.tab}
@@ -55,29 +62,39 @@ export function LoginForm({
           aria-pressed={method === "email"}
           onClick={() => setMethod("email")}
         >
-          Email
+          {copy.emailTab}
         </Button>
       </div>
 
       <div className={styles.fields}>
         {method === "phone" ? (
-          <PhoneNumberInput required />
+          <PhoneNumberInput
+            label={copy.phoneLabel}
+            placeholder={copy.phonePlaceholder}
+            required
+          />
         ) : (
           <EmailInput required />
         )}
-        <PasswordInput required />
+        <PasswordInput
+          label={copy.passwordLabel}
+          placeholder={copy.passwordLabel}
+          showPasswordLabel={showPasswordLabel}
+          hidePasswordLabel={hidePasswordLabel}
+          required
+        />
       </div>
 
       <Link className={styles.forgot} href={forgotPasswordHref}>
-        Lupa Password
+        {copy.forgotPassword}
       </Link>
 
       <Button className={styles.submit} type="submit">
-        Login
+        {copy.submit}
       </Button>
 
       <p className={styles.register}>
-        Belum punya akun? <Link href={registerHref}>Daftar disini</Link>
+        {copy.noAccount} <Link href={registerHref}>{copy.register}</Link>
       </p>
     </form>
   );

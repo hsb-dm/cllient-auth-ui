@@ -1,0 +1,94 @@
+{
+  "common": {
+    "homeLabel": "HSB home page",
+    "awardsLabel": "HSB awards",
+    "regulatorAlt": "BAPPEBTI, OJK, Bank Indonesia, ICDX, Indonesia Clearing House, and ASPEBTINDO",
+    "copyright": "Copyright ©2026 HSB. All rights reserved.",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
+  },
+  "login": {
+    "title": "LOGIN",
+    "methodLabel": "Login method",
+    "phoneTab": "Phone number",
+    "emailTab": "Email",
+    "phoneLabel": "Phone number",
+    "phonePlaceholder": "Phone Number",
+    "passwordLabel": "Password",
+    "forgotPassword": "Forgot Password",
+    "submit": "Login",
+    "noAccount": "Don't have an account?",
+    "register": "Register here"
+  },
+  "forgetPassword": {
+    "title": "RESET PASSWORD",
+    "methodLabel": "Password reset method",
+    "phoneTab": "Phone number",
+    "emailTab": "Email",
+    "phoneLabel": "Phone number",
+    "phonePlaceholder": "Phone Number",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm New Password",
+    "verificationCode": "Verification Code",
+    "sendOtp": "Send OTP",
+    "submit": "Reset Password",
+    "backToLogin": "Back to",
+    "login": "Login",
+    "requirementsLabel": "Password requirements",
+    "passwordRules": [
+      "8-12 characters",
+      "Contains at least 1 number",
+      "Contains at least 1 uppercase letter",
+      "Contains at least 1 lowercase letter",
+      "Contains at least 1 special character"
+    ]
+  },
+  "register": {
+    "title": "REGISTER DEMO ACCOUNT",
+    "phoneLabel": "Phone number",
+    "phonePlaceholder": "Phone Number",
+    "verificationCode": "Verification Code",
+    "sendOtp": "Send OTP",
+    "passwordLabel": "Password",
+    "referralCode": "Referral code (optional)",
+    "submit": "Register",
+    "hasAccount": "Already have an account?",
+    "login": "Login here",
+    "bannerAlt": "Trade risk-free with an HSB demo account: secure and legal, free virtual funds, and no deposit requirement",
+    "bannerTitleLineOne": "TRADE RISK-FREE",
+    "bannerTitleLineTwo": "WITH AN HSB",
+    "bannerTitleLineThree": "DEMO ACCOUNT",
+    "bannerCardOne": "SAFE & LEGAL",
+    "bannerCardTwo": "FREE VIRTUAL FUNDS",
+    "bannerCardThree": "NO DEPOSIT REQUIRED",
+    "headline": "OPEN AN HSB DEMO ACCOUNT AND START TRADING IN MINUTES",
+    "descriptionLineOne": "Practice trading with a free demo account.",
+    "descriptionLineTwo": "Build your trading skills and receive a",
+    "bonus": "Welcome Bonus up to $350.",
+    "virtualFunds": "Free virtual funds",
+    "marketSimulation": "Real-time market simulation",
+    "analysisPractice": "Practice your analysis",
+    "requirementsLabel": "Password requirements",
+    "passwordRules": [
+      "8-12 characters",
+      "Contains at least 1 number",
+      "Contains at least 1 uppercase letter",
+      "Contains at least 1 lowercase letter",
+      "Contains at least 1 special character"
+    ]
+  },
+  "metadata": {
+    "login": {
+      "title": "Login | HSB",
+      "description": "Log in to your HSB account."
+    },
+    "forgetPassword": {
+      "title": "Reset Password | HSB",
+      "description": "Reset your HSB account password."
+    },
+    "register": {
+      "title": "Register Demo Account | HSB",
+      "description": "Create your free HSB demo account."
+    }
+  }
+}

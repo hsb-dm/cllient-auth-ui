@@ -1,5 +1,5 @@
-import { OliveRadialBackground } from "@/components/olive-radial-background";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <OliveRadialBackground />;
+  redirect("/id/login");
 }

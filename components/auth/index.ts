@@ -1,19 +1,48 @@
 export { AuthFooter } from "./auth-footer";
+export type { AuthFooterProps } from "./auth-footer";
 export { AuthFormFrame } from "./auth-form-frame";
 export { AuthHeader } from "./auth-header";
+export type { AuthHeaderProps } from "./auth-header";
 export { AuthPageLayout } from "./auth-page-layout";
+export type { AuthPageLayoutProps } from "./auth-page-layout";
 export { Button } from "./button";
 export type { ButtonProps } from "./button";
 export {
+  authDictionaries,
+  authLocales,
+  getAuthDictionary,
+  isAuthLocale,
+} from "./i18n";
+export type {
+  AuthDictionary,
+  AuthLocale,
+  ForgetPasswordCopy,
+  LoginCopy,
+  RegisterCopy,
+} from "./i18n";
+export {
   ForgetPasswordForm,
+  ForgetPasswordPageView,
   getPasswordRequirements,
-} from "./forget-password-form";
-export { ForgetPasswordPageView } from "./forget-password-page-view";
-export { LoginForm } from "./login-form";
-export { LoginPageView } from "./login-page-view";
+} from "./forget-password";
+export type {
+  ForgetPasswordFormProps,
+  ForgetPasswordMethod,
+  ForgetPasswordPageViewProps,
+} from "./forget-password";
+export { LoginForm, LoginPageView } from "./login";
+export type {
+  LoginFormProps,
+  LoginMethod,
+  LoginPageViewProps,
+} from "./login";
 export {
   defaultPasswordRequirements,
   PasswordRequirements,
+} from "./password-requirements";
+export type {
+  PasswordRequirement,
+  PasswordRequirementsProps,
 } from "./password-requirements";
 export {
   EmailInput,
@@ -21,18 +50,6 @@ export {
   PhoneNumberInput,
   TextInput,
 } from "./inputs";
-export type { LoginFormProps, LoginMethod } from "./login-form";
-export type { LoginPageViewProps } from "./login-page-view";
-export type { AuthPageLayoutProps } from "./auth-page-layout";
-export type {
-  ForgetPasswordFormProps,
-  ForgetPasswordMethod,
-} from "./forget-password-form";
-export type { ForgetPasswordPageViewProps } from "./forget-password-page-view";
-export type {
-  PasswordRequirement,
-  PasswordRequirementsProps,
-} from "./password-requirements";
 export type {
   EmailInputProps,
   InputErrorStateProps,
@@ -40,8 +57,9 @@ export type {
   PhoneNumberInputProps,
   TextInputProps,
 } from "./inputs";
-
-export { RegisterForm } from "./register-form";
-export type { RegisterFormProps } from "./register-form";
-export { RegisterPageView, RegisterBenefits } from "./register-page-view";
-export type { RegisterPageViewProps } from "./register-page-view";
+export { RegisterBenefits, RegisterForm, RegisterPageView } from "./register";
+export type {
+  RegisterBenefitsProps,
+  RegisterFormProps,
+  RegisterPageViewProps,
+} from "./register";
