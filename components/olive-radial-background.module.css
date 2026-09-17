@@ -1,0 +1,11 @@
+.background {
+  min-height: 100svh;
+  width: 100%;
+  background-color: #0a0a0a;
+  background-image: radial-gradient(
+    ellipse 42% 70% at 50% 18%,
+    #182100 0%,
+    #0a0a0a 100%
+  );
+  color: #f5f5f5;
+}

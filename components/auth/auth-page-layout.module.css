@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Stolzl";
+  src: url("/hsb/fonts/StolzlBook.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Stolzl";
+  src: url("/hsb/fonts/StolzlRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Stolzl";
+  src: url("/hsb/fonts/StolzlMedium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Juturu";
+  src: url("/hsb/fonts/Juturu-VariableVF.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+.page {
+  --font-body: "Stolzl", Arial, sans-serif;
+  --font-heading: "Juturu", "Stolzl", Arial, sans-serif;
+
+  font-family: var(--font-body);
+}
+
+.formContainer {
+  position: relative;
+  left: var(--auth-form-container-left, 5px);
+  display: flex;
+  justify-content: center;
+  padding-top: var(--auth-form-container-padding-top, 94px);
+  padding-bottom: 94px;
+}
+
+@media (max-width: 708px) {
+  .formContainer {
+    left: 0;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
