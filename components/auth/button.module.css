@@ -1,0 +1,31 @@
+.button {
+  cursor: pointer;
+  font: inherit;
+}
+
+.primary {
+  height: 46.62px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 15.38px;
+  background: #d9ff00;
+  color: #0a0a0a;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.primary:disabled {
+  background: #f1ffa6;
+  cursor: default;
+}
+
+.plain {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.plain:disabled {
+  cursor: default;
+}

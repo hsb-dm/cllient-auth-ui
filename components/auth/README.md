@@ -174,3 +174,16 @@ The form reuses the shared inputs and password requirements. The register button
 is enabled when a phone number and verification code are present and all password
 requirements are met. The referral code is optional. Server-side validation must
 be handled by the consuming application. Input errors remain input-level props.
+
+## Button
+
+`Button` is shared by the login, forget-password, and register forms. It accepts
+all native button attributes, including `disabled`, `type`, and `onClick`. Its
+disabled appearance is handled by the component itself:
+
+```tsx
+import { Button } from "@/components/auth";
+
+<Button disabled>Daftar</Button>
+<Button variant="plain">Text-only action</Button>
+```

@@ -2,6 +2,8 @@ export { AuthFooter } from "./auth-footer";
 export { AuthFormFrame } from "./auth-form-frame";
 export { AuthHeader } from "./auth-header";
 export { AuthPageLayout } from "./auth-page-layout";
+export { Button } from "./button";
+export type { ButtonProps } from "./button";
 export {
   ForgetPasswordForm,
   getPasswordRequirements,

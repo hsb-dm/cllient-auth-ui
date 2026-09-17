@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, type FormEventHandler } from "react";
+import { Button } from "./button";
 import {
   EmailInput,
   PasswordInput,
@@ -40,22 +41,22 @@ export function LoginForm({
       <h1 className={styles.title}>LOGIN</h1>
 
       <div className={styles.tabs} aria-label="Metode login">
-        <button
+        <Button
           className={styles.tab}
-          type="button"
+          variant="plain"
           aria-pressed={method === "phone"}
           onClick={() => setMethod("phone")}
         >
           Nomor telepon
-        </button>
-        <button
+        </Button>
+        <Button
           className={styles.tab}
-          type="button"
+          variant="plain"
           aria-pressed={method === "email"}
           onClick={() => setMethod("email")}
         >
           Email
-        </button>
+        </Button>
       </div>
 
       <div className={styles.fields}>
@@ -71,9 +72,9 @@ export function LoginForm({
         Lupa Password
       </Link>
 
-      <button className={styles.submit} type="submit">
+      <Button className={styles.submit} type="submit">
         Login
-      </button>
+      </Button>
 
       <p className={styles.register}>
         Belum punya akun? <Link href={registerHref}>Daftar disini</Link>

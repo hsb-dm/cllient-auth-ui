@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, type FormEventHandler, type MouseEventHandler } from "react";
+import { Button } from "./button";
 import { PhoneNumberInput, TextInput, PasswordInput } from "./inputs";
 import { PasswordRequirements } from "./password-requirements";
 import { getPasswordRequirements } from "./forget-password-form";
@@ -13,7 +14,11 @@ export type RegisterFormProps = {
   onSubmit?: FormEventHandler<HTMLFormElement>;
 };
 
-export function RegisterForm({ loginHref = "/login", onSendOtp, onSubmit }: RegisterFormProps) {
+export function RegisterForm({
+  loginHref = "/login",
+  onSendOtp,
+  onSubmit,
+}: RegisterFormProps) {
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
   const [password, setPassword] = useState("");
@@ -26,12 +31,12 @@ export function RegisterForm({ loginHref = "/login", onSendOtp, onSubmit }: Regi
       <PhoneNumberInput required value={phone} onChange={(event) => setPhone(event.currentTarget.value)} />
       <div className={styles.verification}>
         <TextInput label="Kode Verifikasi" name="verificationCode" placeholder="Kode Verifikasi" inputMode="numeric" autoComplete="one-time-code" required value={code} onChange={(event) => setCode(event.currentTarget.value)} />
-        <button type="button" className={styles.otp} onClick={onSendOtp}>Kirim OTP</button>
+        <Button className={styles.otp} onClick={onSendOtp}>Kirim OTP</Button>
       </div>
       <PasswordInput autoComplete="new-password" required value={password} onChange={(event) => setPassword(event.currentTarget.value)} />
       <PasswordRequirements className={styles.requirements} requirements={requirements} />
       <TextInput containerClassName={styles.referral} label="Kode referral (opsional)" name="referralCode" placeholder="Kode referral (opsional)" />
-      <button className={styles.submit} type="submit" disabled={!canSubmit}>Daftar</button>
+      <Button className={styles.submit} type="submit" disabled={!canSubmit}>Daftar</Button>
       <p className={styles.login}>Sudah punya akun? <Link href={loginHref}>Login disini</Link></p>
     </form>
   );

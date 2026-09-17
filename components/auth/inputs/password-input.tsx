@@ -6,6 +6,7 @@ import {
   useState,
   type InputHTMLAttributes,
 } from "react";
+import { Button } from "../button";
 import glass from "../glass-field.module.css";
 import styles from "./auth-input.module.css";
 import {
@@ -87,9 +88,9 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
               errorMessage,
             )}
           />
-          <button
+          <Button
             className={styles.visibilityButton}
-            type="button"
+            variant="plain"
             aria-label={showPassword ? hidePasswordLabel : showPasswordLabel}
             aria-pressed={showPassword}
             onClick={() => setShowPassword((visible) => !visible)}
@@ -117,7 +118,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
                 </>
               )}
             </svg>
-          </button>
+          </Button>
         </div>
         <InputErrorMessage
           id={errorId}

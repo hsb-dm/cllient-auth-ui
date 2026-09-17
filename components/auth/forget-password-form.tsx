@@ -6,6 +6,7 @@ import {
   type FormEventHandler,
   type MouseEventHandler,
 } from "react";
+import { Button } from "./button";
 import {
   EmailInput,
   PasswordInput,
@@ -73,22 +74,22 @@ export function ForgetPasswordForm({
       <h1 className={styles.title}>ATUR ULANG KATA SANDI</h1>
 
       <div className={styles.tabs} aria-label="Metode atur ulang kata sandi">
-        <button
+        <Button
           className={styles.tab}
-          type="button"
+          variant="plain"
           aria-pressed={method === "phone"}
           onClick={() => setMethod("phone")}
         >
           Nomor telepon
-        </button>
-        <button
+        </Button>
+        <Button
           className={styles.tab}
-          type="button"
+          variant="plain"
           aria-pressed={method === "email"}
           onClick={() => setMethod("email")}
         >
           Email
-        </button>
+        </Button>
       </div>
 
       <div className={styles.fields}>
@@ -132,15 +133,15 @@ export function ForgetPasswordForm({
             autoComplete="one-time-code"
             required
           />
-          <button className={styles.sendOtp} type="button" onClick={onSendOtp}>
+          <Button className={styles.sendOtp} onClick={onSendOtp}>
             Kirim OTP
-          </button>
+          </Button>
         </div>
       </div>
 
-      <button className={styles.submit} type="submit">
+      <Button className={styles.submit} type="submit">
         Reset Password
-      </button>
+      </Button>
 
       <p className={styles.backToLogin}>
         Kembali ke halaman <Link href={loginHref}>Login</Link>
