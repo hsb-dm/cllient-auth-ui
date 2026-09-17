@@ -4,24 +4,28 @@ import {
   type ForgetPasswordFormProps,
 } from "./forget-password-form";
 import styles from "./forget-password-page-view.module.css";
-import { getAuthDictionary, type AuthLocale } from "../i18n";
+import type { AuthDictionary, AuthLocale } from "../i18n";
 
-export type ForgetPasswordPageViewProps = ForgetPasswordFormProps & {
-  locale?: AuthLocale;
+export type ForgetPasswordPageViewProps = Omit<
+  ForgetPasswordFormProps,
+  "copy" | "showPasswordLabel" | "hidePasswordLabel"
+> & {
+  locale: AuthLocale;
+  dictionary: AuthDictionary;
+  copy?: ForgetPasswordFormProps["copy"];
   homeHref?: string;
   copyrightText?: string;
 };
 
 export function ForgetPasswordPageView({
-  locale = "id",
+  locale,
+  dictionary,
   homeHref,
   copyrightText,
   loginHref,
   copy,
   ...formProps
 }: ForgetPasswordPageViewProps) {
-  const dictionary = getAuthDictionary(locale);
-
   return (
     <AuthPageLayout
       className={styles.page}

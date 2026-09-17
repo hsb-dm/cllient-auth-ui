@@ -13,7 +13,11 @@ components/auth/
 components/layout/
 components/olive-radial-background.tsx
 components/olive-radial-background.module.css
+app/[lang]/
+i18n-config.ts
+middleware.ts
 public/hsb/
+public/register/
 ```
 
 The only runtime dependencies are `next`, `react`, and `react-dom`. The Juturu
@@ -52,22 +56,33 @@ folders can be copied together without exposing their relative paths.
 
 ## Basic usage
 
-Create `app/login/page.tsx`:
+Create the page under the locale segment and load its dictionary on the server:
 
 ```tsx
+// app/[lang]/login/page.tsx
 import { LoginPageView } from "@/components/auth";
+import { getDictionary } from "../dictionaries";
+import type { Locale } from "@/i18n-config";
 
-export default function LoginPage() {
-  return <LoginPageView />;
+export default async function LoginPage({
+  params,
+}: {
+  params: Promise<{ lang: Locale }>;
+}) {
+  const { lang } = await params;
+  const dictionary = await getDictionary(lang);
+
+  return <LoginPageView locale={lang} dictionary={dictionary} />;
 }
 ```
 
 ## Localized routes
 
 The included App Router pages support Indonesian and English with one shared
-component implementation. All localized wording lives in `messages/id.json`
-and `messages/en.json`; `components/auth/i18n.ts` only provides types and the
-dictionary lookup:
+component implementation. This follows the official Next.js App Router i18n
+pattern. Localized wording lives in `app/[lang]/dictionaries/*.json`, and
+`app/[lang]/dictionaries.ts` loads only the active dictionary with a server-only
+dynamic import:
 
 ```text
 /id/login                 /en/login
@@ -75,10 +90,11 @@ dictionary lookup:
 /id/register              /en/register
 ```
 
-The legacy `/login`, `/forget-password`, and `/register` routes redirect to the
-Indonesian versions. Internal authentication links preserve the active locale.
-Use `authDictionaries`, or pass an individual `copy` object to a form, when the
-consuming application needs to adjust wording without changing the components.
+`middleware.ts` redirects paths without a locale prefix by checking the
+`NEXT_LOCALE` cookie and then falling back to the `id` default locale in
+`i18n-config.ts`. Browser language detection is intentionally disabled so a new
+visitor always starts in Indonesian. Internal authentication links preserve the
+active locale. The locale root layout sets the correct `<html lang>` attribute.
 
 If the target repository does not use the `@/` alias, replace the route import
 with a relative path. Imports inside the module already use relative paths.
@@ -87,16 +103,14 @@ with a relative path. Imports inside the module already use relative paths.
 
 ```tsx
 <LoginPageView
-  homeHref="/"
-  forgotPasswordHref="/forget-password"
-  registerHref="/register"
-  copyrightText="Copyright ©2026 HSB. All rights reserved."
+  locale={lang}
+  dictionary={dictionary}
   defaultMethod="phone"
 />
 ```
 
-All props are optional. The links and `defaultMethod` shown above are the
-default values; `copyrightText` demonstrates how to override the product copy.
+`locale` and `dictionary` are required. Routes and translated copy are derived
+from them. Link and copyright props remain available as explicit overrides.
 
 ## Reusable input components
 
@@ -111,9 +125,14 @@ import {
   TextInput,
 } from "@/components/auth";
 
-<PhoneNumberInput name="phone" />;
+<PhoneNumberInput label="Phone number" name="phone" />;
 <EmailInput name="email" />;
-<PasswordInput name="password" />;
+<PasswordInput
+  label="Password"
+  showPasswordLabel="Show password"
+  hidePasswordLabel="Hide password"
+  name="password"
+/>;
 <TextInput
   label="Referral code"
   name="referralCode"
@@ -136,11 +155,15 @@ Error state belongs to each input instead of `LoginForm`. Pass `isError` and
 <EmailInput isError={true} errorMessage="Enter a valid email address" />
 
 <PhoneNumberInput
+  label="Phone number"
   isError={true}
   errorMessage="The phone number must start with 8"
 />
 
 <PasswordInput
+  label="Password"
+  showPasswordLabel="Show password"
+  hidePasswordLabel="Hide password"
   isError={true}
   errorMessage="The password must contain at least 8 characters"
 />
@@ -159,9 +182,9 @@ authentication logic is available:
 "use client";
 
 import type { FormEvent } from "react";
-import { LoginForm } from "@/components/auth";
+import { LoginForm, type AuthDictionary } from "@/components/auth";
 
-export function ConnectedLoginForm() {
+export function ConnectedLoginForm({ dictionary }: { dictionary: AuthDictionary }) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const values = new FormData(event.currentTarget);
@@ -170,7 +193,14 @@ export function ConnectedLoginForm() {
     console.log(values.get("phone"), values.get("email"), values.get("password"));
   }
 
-  return <LoginForm onSubmit={handleSubmit} />;
+  return (
+    <LoginForm
+      copy={dictionary.login}
+      showPasswordLabel={dictionary.common.showPassword}
+      hidePasswordLabel={dictionary.common.hidePassword}
+      onSubmit={handleSubmit}
+    />
+  );
 }
 ```
 
@@ -182,13 +212,23 @@ visual components are also exported from `components/auth/index.ts`:
 
 ## Forget-password page
 
-Create `app/forget-password/page.tsx`:
+Create `app/[lang]/forget-password/page.tsx` and load the dictionary as shown in
+the login example:
 
 ```tsx
 import { ForgetPasswordPageView } from "@/components/auth";
+import { getDictionary } from "../dictionaries";
+import type { Locale } from "@/i18n-config";
 
-export default function ForgetPasswordPage() {
-  return <ForgetPasswordPageView />;
+export default async function ForgetPasswordPage({
+  params,
+}: {
+  params: Promise<{ lang: Locale }>;
+}) {
+  const { lang } = await params;
+  const dictionary = await getDictionary(lang);
+
+  return <ForgetPasswordPageView locale={lang} dictionary={dictionary} />;
 }
 ```
 
@@ -197,9 +237,13 @@ and `TextInput`. It also exports a reusable `PasswordRequirements` component
 for the future registration page. The form accepts `onSubmit`, `onSendOtp`,
 `defaultMethod`, `loginHref`, and custom password requirements.
 
-The default password rules update while the user types. A fulfilled rule uses
-`#00CA20` for both its check indicator and label. `getPasswordRequirements` is
-also exported so another form can use the same validation rules.
+The password rules update while the user types. A fulfilled rule uses `#00CA20`
+for both its check indicator and label. `getPasswordRequirements` is also
+exported so another form can use the same validation rules and translated labels:
+
+```tsx
+getPasswordRequirements(password, dictionary.forgetPassword.passwordRules);
+```
 
 ## Assets
 
@@ -209,11 +253,12 @@ changes. Every public asset URL used by the components starts with `/hsb/`.
 
 ## Register page
 
-Create `app/register/page.tsx` and render `RegisterPageView` from
+Create `app/[lang]/register/page.tsx` and render `RegisterPageView` from
 `@/components/auth`. Copy `public/register/` together with the shared assets.
 The supplied banner and benefit icon are served locally.
 
-`RegisterPageView` accepts `homeHref`, `copyrightText`, and the form props.
+`RegisterPageView` requires `locale` and `dictionary`, and also accepts
+`homeHref`, `copyrightText`, and the form props.
 `RegisterForm` accepts `loginHref`, `onSendOtp`, and `onSubmit`. Wire the callbacks
 in a Client Component to your application's services. OTP delivery and account
 creation are not connected to a backend in this UI module.

@@ -7,7 +7,6 @@ import {
   type InputHTMLAttributes,
 } from "react";
 import glass from "../../styles/glass-field.module.css";
-import { authDictionaries } from "../../i18n";
 import styles from "../shared/auth-input.module.css";
 import {
   getDescribedBy,
@@ -20,7 +19,7 @@ export type PhoneNumberInputProps = Omit<
   "type" | "inputMode"
 > &
   InputErrorStateProps & {
-    label?: string;
+    label: string;
     countryCode?: string;
     countryName?: string;
     flagSrc?: string;
@@ -33,9 +32,9 @@ export const PhoneNumberInput = forwardRef<
 >(function PhoneNumberInput(
   {
     id,
-    label = authDictionaries.id.login.phoneLabel,
+    label,
     name = "phone",
-    placeholder = authDictionaries.id.login.phonePlaceholder,
+    placeholder = label,
     autoComplete = "tel-national",
     countryCode = "+62",
     countryName = "Indonesia",

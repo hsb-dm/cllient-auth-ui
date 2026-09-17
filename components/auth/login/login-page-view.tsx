@@ -1,13 +1,14 @@
 import { AuthPageLayout } from "../auth-page-layout";
 import {
-  getAuthDictionary,
+  type AuthDictionary,
   type AuthLocale,
   type LoginCopy,
 } from "../i18n";
 import { LoginForm, type LoginFormProps } from "./login-form";
 
 export type LoginPageViewProps = {
-  locale?: AuthLocale;
+  locale: AuthLocale;
+  dictionary: AuthDictionary;
   copy?: LoginCopy;
   homeHref?: string;
   forgotPasswordHref?: string;
@@ -17,7 +18,8 @@ export type LoginPageViewProps = {
 };
 
 export function LoginPageView({
-  locale = "id",
+  locale,
+  dictionary,
   copy,
   homeHref,
   forgotPasswordHref,
@@ -25,8 +27,6 @@ export function LoginPageView({
   copyrightText,
   defaultMethod = "phone",
 }: LoginPageViewProps) {
-  const dictionary = getAuthDictionary(locale);
-
   return (
     <AuthPageLayout
       homeHref={homeHref ?? `/${locale}`}

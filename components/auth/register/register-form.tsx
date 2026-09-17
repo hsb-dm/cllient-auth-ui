@@ -3,25 +3,25 @@
 import Link from "next/link";
 import { useState, type FormEventHandler, type MouseEventHandler } from "react";
 import { Button } from "../button";
-import { authDictionaries, type RegisterCopy } from "../i18n";
+import type { RegisterCopy } from "../i18n";
 import { PhoneNumberInput, TextInput, PasswordInput } from "../inputs";
 import { PasswordRequirements } from "../password-requirements";
 import { getPasswordRequirements } from "../forget-password";
 import styles from "./register.module.css";
 
 export type RegisterFormProps = {
-  copy?: RegisterCopy;
-  showPasswordLabel?: string;
-  hidePasswordLabel?: string;
+  copy: RegisterCopy;
+  showPasswordLabel: string;
+  hidePasswordLabel: string;
   loginHref?: string;
   onSendOtp?: MouseEventHandler<HTMLButtonElement>;
   onSubmit?: FormEventHandler<HTMLFormElement>;
 };
 
 export function RegisterForm({
-  copy = authDictionaries.id.register,
-  showPasswordLabel = authDictionaries.id.common.showPassword,
-  hidePasswordLabel = authDictionaries.id.common.hidePassword,
+  copy,
+  showPasswordLabel,
+  hidePasswordLabel,
   loginHref = "/id/login",
   onSendOtp,
   onSubmit,

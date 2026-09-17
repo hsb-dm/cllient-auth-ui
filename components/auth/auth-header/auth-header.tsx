@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "../../layout/container";
-import { authDictionaries } from "../i18n";
 import styles from "./auth-header.module.css";
 
 const awards = [
@@ -14,14 +13,14 @@ const awards = [
 
 export type AuthHeaderProps = {
   homeHref?: string;
-  homeLabel?: string;
-  awardsLabel?: string;
+  homeLabel: string;
+  awardsLabel: string;
 };
 
 export function AuthHeader({
   homeHref = "/",
-  homeLabel = authDictionaries.id.common.homeLabel,
-  awardsLabel = authDictionaries.id.common.awardsLabel,
+  homeLabel,
+  awardsLabel,
 }: AuthHeaderProps) {
   return (
     <header className={styles.header}>

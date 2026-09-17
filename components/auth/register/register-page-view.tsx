@@ -8,24 +8,29 @@ import { RegisterForm, type RegisterFormProps } from "./register-form";
 import shared from "../auth-page-layout/auth-page-layout.module.css";
 import styles from "./register.module.css";
 import {
-  getAuthDictionary,
+  type AuthDictionary,
   type AuthLocale,
   type RegisterCopy,
 } from "../i18n";
 
-export type RegisterPageViewProps = RegisterFormProps & {
-  locale?: AuthLocale;
+export type RegisterPageViewProps = Omit<
+  RegisterFormProps,
+  "copy" | "showPasswordLabel" | "hidePasswordLabel"
+> & {
+  locale: AuthLocale;
+  dictionary: AuthDictionary;
+  copy?: RegisterFormProps["copy"];
   homeHref?: string;
   copyrightText?: string;
 };
 
 export type RegisterBenefitsProps = {
-  copy?: RegisterCopy;
+  copy: RegisterCopy;
   locale?: AuthLocale;
 };
 
 export function RegisterBenefits({
-  copy = getAuthDictionary("id").register,
+  copy,
   locale = "id",
 }: RegisterBenefitsProps) {
   return (
@@ -56,9 +61,7 @@ export function RegisterBenefits({
   );
 }
 
-export function RegisterPageView({ locale = "id", homeHref, copyrightText, loginHref, copy, ...formProps }: RegisterPageViewProps) {
-  const dictionary = getAuthDictionary(locale);
-
+export function RegisterPageView({ locale, dictionary, homeHref, copyrightText, loginHref, copy, ...formProps }: RegisterPageViewProps) {
   return (
     <OliveRadialBackground className={`${shared.page} ${styles.page}`}>
       <AuthHeader homeHref={homeHref ?? `/${locale}`} homeLabel={dictionary.common.homeLabel} awardsLabel={dictionary.common.awardsLabel} />

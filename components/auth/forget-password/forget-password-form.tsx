@@ -7,7 +7,7 @@ import {
   type MouseEventHandler,
 } from "react";
 import { Button } from "../button";
-import { authDictionaries, type ForgetPasswordCopy } from "../i18n";
+import type { ForgetPasswordCopy } from "../i18n";
 import {
   EmailInput,
   PasswordInput,
@@ -24,9 +24,9 @@ import styles from "./forget-password-form.module.css";
 export type ForgetPasswordMethod = "phone" | "email";
 
 export type ForgetPasswordFormProps = {
-  copy?: ForgetPasswordCopy;
-  showPasswordLabel?: string;
-  hidePasswordLabel?: string;
+  copy: ForgetPasswordCopy;
+  showPasswordLabel: string;
+  hidePasswordLabel: string;
   defaultMethod?: ForgetPasswordMethod;
   loginHref?: string;
   requirements?: PasswordRequirementsProps["requirements"];
@@ -36,7 +36,7 @@ export type ForgetPasswordFormProps = {
 
 export function getPasswordRequirements(
   password: string,
-  labels = authDictionaries.id.forgetPassword.passwordRules,
+  labels: readonly string[],
 ): PasswordRequirement[] {
   return [
     {
@@ -54,9 +54,9 @@ export function getPasswordRequirements(
 }
 
 export function ForgetPasswordForm({
-  copy = authDictionaries.id.forgetPassword,
-  showPasswordLabel = authDictionaries.id.common.showPassword,
-  hidePasswordLabel = authDictionaries.id.common.hidePassword,
+  copy,
+  showPasswordLabel,
+  hidePasswordLabel,
   defaultMethod = "phone",
   loginHref = "/id/login",
   requirements,

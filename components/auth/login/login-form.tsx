@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, type FormEventHandler } from "react";
 import { Button } from "../button";
-import { authDictionaries, type LoginCopy } from "../i18n";
+import type { LoginCopy } from "../i18n";
 import {
   EmailInput,
   PasswordInput,
@@ -14,9 +14,9 @@ import styles from "./login-form.module.css";
 export type LoginMethod = "phone" | "email";
 
 export type LoginFormProps = {
-  copy?: LoginCopy;
-  showPasswordLabel?: string;
-  hidePasswordLabel?: string;
+  copy: LoginCopy;
+  showPasswordLabel: string;
+  hidePasswordLabel: string;
   defaultMethod?: LoginMethod;
   forgotPasswordHref?: string;
   registerHref?: string;
@@ -24,9 +24,9 @@ export type LoginFormProps = {
 };
 
 export function LoginForm({
-  copy = authDictionaries.id.login,
-  showPasswordLabel = authDictionaries.id.common.showPassword,
-  hidePasswordLabel = authDictionaries.id.common.hidePassword,
+  copy,
+  showPasswordLabel,
+  hidePasswordLabel,
   defaultMethod = "phone",
   forgotPasswordHref = "/id/forget-password",
   registerHref = "/id/register",

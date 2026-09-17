@@ -1,5 +1,0 @@
-import { redirect } from "next/navigation";
-
-export default function ForgetPasswordPage() {
-  redirect("/id/forget-password");
-}

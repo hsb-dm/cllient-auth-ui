@@ -8,7 +8,6 @@ import {
 } from "react";
 import { Button } from "../../button";
 import glass from "../../styles/glass-field.module.css";
-import { authDictionaries } from "../../i18n";
 import styles from "../shared/auth-input.module.css";
 import {
   getDescribedBy,
@@ -21,9 +20,9 @@ export type PasswordInputProps = Omit<
   "type"
 > &
   InputErrorStateProps & {
-    label?: string;
-    showPasswordLabel?: string;
-    hidePasswordLabel?: string;
+    label: string;
+    showPasswordLabel: string;
+    hidePasswordLabel: string;
     containerClassName?: string;
   };
 
@@ -31,12 +30,12 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   function PasswordInput(
     {
       id,
-      label = authDictionaries.id.login.passwordLabel,
+      label,
       name = "password",
-      placeholder = authDictionaries.id.login.passwordLabel,
+      placeholder = label,
       autoComplete = "current-password",
-      showPasswordLabel = authDictionaries.id.common.showPassword,
-      hidePasswordLabel = authDictionaries.id.common.hidePassword,
+      showPasswordLabel,
+      hidePasswordLabel,
       containerClassName,
       isError = false,
       errorMessage,

@@ -1,7 +1,4 @@
-export {
-  defaultPasswordRequirements,
-  PasswordRequirements,
-} from "./password-requirements";
+export { PasswordRequirements } from "./password-requirements";
 export type {
   PasswordRequirement,
   PasswordRequirementsProps,

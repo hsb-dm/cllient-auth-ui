@@ -1,5 +1,4 @@
 import styles from "./password-requirements.module.css";
-import { authDictionaries } from "../i18n";
 
 export type PasswordRequirement = {
   label: string;
@@ -7,18 +6,15 @@ export type PasswordRequirement = {
 };
 
 export type PasswordRequirementsProps = {
-  requirements?: readonly PasswordRequirement[];
+  requirements: readonly PasswordRequirement[];
   className?: string;
-  ariaLabel?: string;
+  ariaLabel: string;
 };
 
-export const defaultPasswordRequirements: readonly PasswordRequirement[] =
-  authDictionaries.id.forgetPassword.passwordRules.map((label) => ({ label }));
-
 export function PasswordRequirements({
-  requirements = defaultPasswordRequirements,
+  requirements,
   className,
-  ariaLabel = authDictionaries.id.forgetPassword.requirementsLabel,
+  ariaLabel,
 }: PasswordRequirementsProps) {
   return (
     <ul

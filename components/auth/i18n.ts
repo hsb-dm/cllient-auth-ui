@@ -1,9 +1,6 @@
-import enMessages from "@/messages/en.json";
-import idMessages from "@/messages/id.json";
+import type { Locale } from "@/i18n-config";
 
-export const authLocales = ["id", "en"] as const;
-
-export type AuthLocale = (typeof authLocales)[number];
+export type AuthLocale = Locale;
 
 export type LoginCopy = {
   title: string;
@@ -84,16 +81,3 @@ export type AuthDictionary = {
     register: { title: string; description: string };
   };
 };
-
-export const authDictionaries: Record<AuthLocale, AuthDictionary> = {
-  id: idMessages,
-  en: enMessages,
-};
-
-export function isAuthLocale(locale: string): locale is AuthLocale {
-  return authLocales.includes(locale as AuthLocale);
-}
-
-export function getAuthDictionary(locale: AuthLocale): AuthDictionary {
-  return authDictionaries[locale];
-}

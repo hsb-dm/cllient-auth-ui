@@ -7,12 +7,6 @@ export { AuthPageLayout } from "./auth-page-layout";
 export type { AuthPageLayoutProps } from "./auth-page-layout";
 export { Button } from "./button";
 export type { ButtonProps } from "./button";
-export {
-  authDictionaries,
-  authLocales,
-  getAuthDictionary,
-  isAuthLocale,
-} from "./i18n";
 export type {
   AuthDictionary,
   AuthLocale,
@@ -36,10 +30,7 @@ export type {
   LoginMethod,
   LoginPageViewProps,
 } from "./login";
-export {
-  defaultPasswordRequirements,
-  PasswordRequirements,
-} from "./password-requirements";
+export { PasswordRequirements } from "./password-requirements";
 export type {
   PasswordRequirement,
   PasswordRequirementsProps,

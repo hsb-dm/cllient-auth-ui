@@ -4,23 +4,22 @@ import { OliveRadialBackground } from "../../olive-radial-background";
 import { AuthFooter } from "../auth-footer";
 import { AuthFormFrame } from "../auth-form-frame";
 import { AuthHeader } from "../auth-header";
-import { authDictionaries } from "../i18n";
 import styles from "./auth-page-layout.module.css";
 
 export type AuthPageLayoutProps = {
   children: ReactNode;
   homeHref?: string;
-  copyrightText?: string;
-  homeLabel?: string;
-  awardsLabel?: string;
-  regulatorAlt?: string;
+  copyrightText: string;
+  homeLabel: string;
+  awardsLabel: string;
+  regulatorAlt: string;
   className?: string;
 };
 
 export function AuthPageLayout({
   children,
   homeHref = "/",
-  copyrightText = authDictionaries.id.common.copyright,
+  copyrightText,
   homeLabel,
   awardsLabel,
   regulatorAlt,

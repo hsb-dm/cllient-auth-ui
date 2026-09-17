@@ -1,16 +1,15 @@
 import Image from "next/image";
 import { Container } from "../../layout/container";
-import { authDictionaries } from "../i18n";
 import styles from "./auth-footer.module.css";
 
 export type AuthFooterProps = {
-  copyrightText?: string;
-  regulatorAlt?: string;
+  copyrightText: string;
+  regulatorAlt: string;
 };
 
 export function AuthFooter({
-  copyrightText = authDictionaries.id.common.copyright,
-  regulatorAlt = authDictionaries.id.common.regulatorAlt,
+  copyrightText,
+  regulatorAlt,
 }: AuthFooterProps) {
   return (
     <footer className={styles.footer}>
